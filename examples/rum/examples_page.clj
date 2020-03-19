@@ -1,23 +1,23 @@
 (ns rum.examples-page
   (:require
-    [rum.core :as rum]
-    [rum.examples.core :as core]
-    [rum.examples.timer-reactive :as timer-reactive]
-    [rum.examples.timer-static   :as timer-static]
-    [rum.examples.controls       :as controls]
-    [rum.examples.binary-clock   :as binary-clock]
-    [rum.examples.board-reactive :as board-reactive]
-    [rum.examples.bmi-calculator :as bmi-calculator]
-    [rum.examples.inputs         :as inputs]
-    [rum.examples.refs           :as refs]
-    [rum.examples.local-state    :as local-state]
-    [rum.examples.keys           :as keys]
-    [rum.examples.self-reference :as self-reference]
-    [rum.examples.multiple-return :as multiple-return]
-    [rum.examples.errors         :as errors]))
+   [rum.core :as rum]
+   [rum.examples.core :as core]
+   [rum.examples.timer-reactive :as timer-reactive]
+   [rum.examples.timer-static   :as timer-static]
+   [rum.examples.controls       :as controls]
+   [rum.examples.binary-clock   :as binary-clock]
+   [rum.examples.board-reactive :as board-reactive]
+   [rum.examples.bmi-calculator :as bmi-calculator]
+   [rum.examples.inputs         :as inputs]
+   [rum.examples.refs           :as refs]
+   [rum.examples.local-state    :as local-state]
+   [rum.examples.keys           :as keys]
+   [rum.examples.self-reference :as self-reference]
+   [rum.examples.multiple-return :as multiple-return]
+   [rum.examples.errors         :as errors]))
 
 (def page (str
-"<!doctype html>
+           "<!doctype html>
 <html>
   <head>
     <meta http-equiv='content-type' content='text/html;charset=UTF-8'/>
@@ -76,7 +76,7 @@
       <div class=example-title>BMI Calculator</div>
       <div id=bmi-calculator>" (rum/render-html (bmi-calculator/bmi-calculator)) "</div>
     </div>
-    
+
     <div class=example>
       <div class=example-title>Form validation</div>
       <div id=form-validation></div>
@@ -86,7 +86,7 @@
       <div class=example-title>Inputs</div>
       <div id=inputs>" (rum/render-html (inputs/inputs)) "</div>
     </div>
-            
+
     <div class=example>
       <div class=example-title>Refs</div>
       <div id=refs>" (rum/render-html (refs/refs)) "</div>
@@ -96,12 +96,12 @@
       <div class=example-title>Local state</div>
       <div id=local-state>" (rum/render-html (local-state/local-state "Clicks count")) "</div>
     </div>
-            
+
     <div class=example>
       <div class=example-title>Keys</div>
       <div id=keys>" (rum/render-html (keys/keys)) "</div>
     </div>
-    
+
     <div class=example>
       <div class=example-title>Self-reference</div>
       <div id=self-reference>" (rum/render-html (self-reference/self-reference [:a [:b [:c :d [:e] :g]]])) "</div>
@@ -117,29 +117,27 @@
       <div id=custom-props></div>
     </div>
 
-    <div class=example> 
-      <div class=example-title>Multiple Return</div> 
+    <div class=example>
+      <div class=example-title>Multiple Return</div>
       <div id=multiple-return>" (rum/render-html (multiple-return/ulist (multiple-return/multiple-return))) "</div>
-    </div> 
+    </div>
 
-    <div class=example> 
-      <div class=example-title>Portals</div> 
+    <div class=example>
+      <div class=example-title>Portals</div>
       <div id=portal-off-root></div>
       <div id=portal-root></div>
     </div>
 
-    <div class=example> 
-      <div class=example-title>Error boundaries</div> 
+    <div class=example>
+      <div class=example-title>Error boundaries</div>
       <p>Server: <span id=server-errors>" (rum/render-html (errors/errors)) "</span></p>
       <p>Client: <span id=client-errors></span></p>
-    </div> 
+    </div>
 
     <script src='target/main.js' type='text/javascript'></script>
   </body>
 </html>"))
 
-
 (defn -main [& args]
   (println "Writing \"index.html\"")
   (spit "index.html" page))
-

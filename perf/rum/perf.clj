@@ -55,7 +55,7 @@
                            (remove nil?))]
         (vec
           (concat [tag'] (when attrs' [attrs']) children))))
-    
+
     ;; text node
     (string? form)
     (if (str/blank? form) nil form)))
@@ -83,7 +83,7 @@
     (let [comp (convert-page path)]
       (println "\n--- Testing" page (str "(" (file-size path) ")") "---")
       (criterium/quick-bench (rum/render-static-markup comp)))
-      
+
     (let [comp (binding [*convert-style?* false]
                  (convert-page path))]
       (println "\n+++ With Hiccup +++")
